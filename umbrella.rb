@@ -15,9 +15,9 @@ raw_response = HTTP.get(google_maps_url)
 
 gmaps_hash = JSON.parse(raw_response)
 
-pp gmaps_hash.fetch("results")[0]
+gmaps_hash.fetch("results")[0]["geometry"]["location"]
 
-# lat_long = gmaps_hash[:results][0][:geometry][:location]
-# lat = lat_long[:lat]
-# long = lat_long[:lng]
-# pp "latitude: #{lat}, longitude: #{long}"
+lat_long = gmaps_hash.fetch("results")[0]["geometry"]["location"]
+lat = lat_long["lat"]
+long = lat_long["lng"]
+pp "latitude: #{lat}, longitude: #{long}"
