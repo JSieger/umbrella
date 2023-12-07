@@ -25,4 +25,18 @@ pirate_weather_url = "https://api.pirateweather.net/forecast/" + ENV.fetch("PIRA
 
 pirate_response = HTTP.get(pirate_weather_url)
 
-pp pirate_response
+parsed_pirate_weather_data = JSON.parse(pirate_response)
+
+currently_hash = parsed_pirate_weather_data.fetch("currently")
+
+temperature = currently_hash["temperature"]
+summary = currently_hash["summary"]
+rain_bool = currently_hash["precipType"] == "rain"
+
+pp "agent! the temperature is: " + temperature.to_s
+pp "summary of weather: " + summary
+if rain_bool
+  pp "you need an umbrella kid"
+else
+  pp "don't worry about an umbrella today kid"
+end
