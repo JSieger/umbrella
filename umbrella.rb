@@ -1,11 +1,9 @@
 require "http"
 require "json"
 
-# puts "Agent! what is your location?!\n"
+puts "Agent! what is your location?!\n"
 
-# location = gets.chomp
-
-location = "sacramento"
+location = gets.chomp
 
 # Assemble the full URL string by adding the first part, the API token, and the last part together
 google_maps_url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + location + "&key=" + ENV.fetch("GMAPS_KEY")
